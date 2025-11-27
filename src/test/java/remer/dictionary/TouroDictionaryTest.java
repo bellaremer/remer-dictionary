@@ -16,7 +16,7 @@ class TouroDictionaryTest
     }
 
     @Test
-    public void testLookUpWord ()
+    public void lookUpWord()
     {
         // Given
         String word = "AA";
@@ -30,7 +30,7 @@ class TouroDictionaryTest
     }
 
     @Test
-    public void testLookupWordNotFound()
+    public void lookupWordNotFound()
     {
         // Given
         String word = "NONEXISTENTWORD";
@@ -44,7 +44,7 @@ class TouroDictionaryTest
     }
 
     @Test
-    public void testLookupNullWord()
+    public void lookupNullWord()
     {
         // Given
         String word = null;
@@ -58,7 +58,7 @@ class TouroDictionaryTest
     }
 
     @Test
-    public void testLookupEmptyWord()
+    public void lookupEmptyWord()
     {
         // Given
         String word = "";
@@ -72,7 +72,7 @@ class TouroDictionaryTest
     }
 
     @Test
-    public void testLookupCaseInsensitive()
+    public void lookupCaseInsensitive()
     {
         // Given
         String word = "aa";

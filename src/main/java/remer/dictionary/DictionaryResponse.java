@@ -1,7 +1,6 @@
 package remer.dictionary;
 /*holds the data that gets sent back to the user (outgoing)*/
 
-
 public class DictionaryResponse
 {
     private String word;
@@ -21,15 +20,5 @@ public class DictionaryResponse
     public String getDefinition()
     {
         return definition;
-    }
-
-    public void setWord(String word)
-    {
-        this.word = word;
-    }
-
-    public void setDefinition(String definition)
-    {
-        this.definition = definition;
     }
 }

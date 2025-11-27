@@ -15,8 +15,4 @@ public class DictionaryRequest
         return word;
     }
 
-    public void setWord(String word)
-    {
-        this.word = word;
-    }
 }
