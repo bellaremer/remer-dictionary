@@ -2,8 +2,7 @@ package remer.dictionary;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import retrofit2.Call;
-import retrofit2.Response;
+import io.reactivex.rxjava3.core.Single;
 
 import java.io.IOException;
 
@@ -28,14 +27,13 @@ class TouroDictionaryServiceTest
         DictionaryRequest request = new DictionaryRequest(word);
 
         // When
-        Call<DictionaryResponse> call = service.lookupWord(request);
-        Response<DictionaryResponse> response = call.execute();
+        Single<DictionaryResponse> single = service.lookupWord(request);
+        DictionaryResponse response = single.blockingGet();
 
         // Then
-        assertTrue(response.isSuccessful());
-        assertNotNull(response.body());
-        assertEquals(word, response.body().getWord());
-        assertEquals("rough, cindery lava [n -S]", response.body().getDefinition());
+        assertNotNull(response);
+        assertEquals(word, response.getWord());
+        assertEquals("rough, cindery lava [n -S]", response.getDefinition());
     }
 
     @Test
@@ -46,14 +44,13 @@ class TouroDictionaryServiceTest
         DictionaryRequest request = new DictionaryRequest(word);
 
         // When
-        Call<DictionaryResponse> call = service.lookupWord(request);
-        Response<DictionaryResponse> response = call.execute();
+        Single<DictionaryResponse> single = service.lookupWord(request);
+        DictionaryResponse response = single.blockingGet();
 
         // Then
-        assertTrue(response.isSuccessful());
-        assertNotNull(response.body());
-        assertEquals(word, response.body().getWord());
-        assertNull(response.body().getDefinition());
+        assertNotNull(response);
+        assertEquals(word, response.getWord());
+        assertNull(response.getDefinition());
     }
 
     @Test
@@ -64,13 +61,12 @@ class TouroDictionaryServiceTest
         DictionaryRequest request = new DictionaryRequest(word);
 
         // When
-        Call<DictionaryResponse> call = service.lookupWord(request);
-        Response<DictionaryResponse> response = call.execute();
+        Single<DictionaryResponse> single = service.lookupWord(request);
+        DictionaryResponse response = single.blockingGet();
 
         // Then
-        assertTrue(response.isSuccessful());
-        assertNotNull(response.body());
-        assertEquals(word, response.body().getWord());
-        assertEquals("rough, cindery lava [n -S]", response.body().getDefinition());
+        assertNotNull(response);
+        assertEquals(word, response.getWord());
+        assertEquals("rough, cindery lava [n -S]", response.getDefinition());
     }
 }
