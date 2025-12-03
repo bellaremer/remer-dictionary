@@ -1,7 +1,6 @@
 package remer.dictionary;
-/*
-This class holds the data from the incoming JSON request (incoming)
-*/
+
+// This class holds the data from the incoming JSON request (incoming)
 
 public class DictionaryResponse
 {
