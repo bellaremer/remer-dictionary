@@ -9,7 +9,8 @@ import com.google.gson.Gson;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-public class DictionaryRequestHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>
+public class DictionaryRequestHandler implements RequestHandler
+        <APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>
 {
     private TouroDictionary dictionary;
     private Gson gson;
