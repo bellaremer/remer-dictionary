@@ -61,4 +61,3 @@ public class DictionaryRequestHandler implements RequestHandler<APIGatewayProxyR
         return apiResponse;
     }
 }
-

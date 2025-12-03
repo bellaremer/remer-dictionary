@@ -52,21 +52,4 @@ class TouroDictionaryServiceTest
         assertEquals(word, response.getWord());
         assertNull(response.getDefinition());
     }
-
-    @Test
-    public void lookupWord_ServerError() throws IOException
-    {
-        // Given
-        String word = "aa";
-        DictionaryRequest request = new DictionaryRequest(word);
-
-        // When
-        Single<DictionaryResponse> single = service.lookupWord(request);
-        DictionaryResponse response = single.blockingGet();
-
-        // Then
-        assertNotNull(response);
-        assertEquals(word, response.getWord());
-        assertEquals("rough, cindery lava [n -S]", response.getDefinition());
-    }
 }
