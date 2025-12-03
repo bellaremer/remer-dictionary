@@ -1,5 +1,4 @@
 package remer.dictionary;
-// Holds the data that gets sent back to the user (outgoing)
 
 public class DictionaryResponse
 {
