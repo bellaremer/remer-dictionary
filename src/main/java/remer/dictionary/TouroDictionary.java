@@ -16,6 +16,13 @@ public class TouroDictionary
         loadDictionary();
     }
 
+    // New constructor that loads from an InputStream (S3)
+    public TouroDictionary(InputStream inputStream)
+    {
+        dictionary = new HashMap<>();
+        loadDictionaryFromStream(inputStream);
+    }
+
     private void loadDictionary()
     {
         InputStream dictionaryFile = TouroDictionary.class.getResourceAsStream("/dictionary.txt");
@@ -27,6 +34,28 @@ public class TouroDictionary
         }
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(dictionaryFile)))
+        {
+            String line;
+
+            while ((line = reader.readLine()) != null)
+            {
+                int spaceIndex = line.indexOf(' ');
+                if (spaceIndex > 0)
+                {
+                    String word = line.substring(0, spaceIndex).trim().toUpperCase();
+                    String definition = line.substring(spaceIndex + 1).trim();
+                    dictionary.put(word, definition);
+                }
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadDictionaryFromStream(InputStream inputStream)
+    {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)))
         {
             String line;
 

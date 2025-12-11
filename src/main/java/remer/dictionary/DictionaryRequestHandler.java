@@ -5,7 +5,10 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.google.gson.Gson;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -17,7 +20,17 @@ public class DictionaryRequestHandler implements RequestHandler
 
     public DictionaryRequestHandler()
     {
-        this.dictionary = new TouroDictionary();
+        S3Client s3Client = S3Client.create();
+
+        GetObjectRequest getObjectRequest = GetObjectRequest
+                .builder()
+                .bucket("remer-dictionary")
+                .key("dictionary.txt")
+                .build();
+
+        InputStream in = s3Client.getObject(getObjectRequest);
+
+        this.dictionary = new TouroDictionary(in);
         this.gson = new Gson();
     }
 
