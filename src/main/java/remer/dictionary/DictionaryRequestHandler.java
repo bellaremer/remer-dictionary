@@ -74,4 +74,5 @@ public class DictionaryRequestHandler implements RequestHandler
         apiResponse.setBody(stringWriter.toString());
         return apiResponse;
     }
+
 }
